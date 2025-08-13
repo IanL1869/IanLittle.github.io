@@ -25,3 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error(error));
 });
+
+document.querySelectorAll('.social-links a').forEach(link => {
+    const currentPage = window.location.pathname.split('/').pop();
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+    }
+});
