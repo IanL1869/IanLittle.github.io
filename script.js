@@ -26,10 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error(error));
 });
 
-// Add active class to current page link
 const currentPage = location.pathname.split('/').pop();
 document.querySelectorAll('.nav-links a').forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
+    const linkHref = link.getAttribute('href');
+    if (linkHref === currentPage) {
         link.classList.add('active');
+    }
+    // Handle the case where the new page name might change
+    if (linkHref === 'professional-profile.html' && (currentPage === 'cv.html' || currentPage === 'education.html')) {
+         link.classList.add('active');
     }
 });
