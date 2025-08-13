@@ -14,8 +14,28 @@
     <section>
     <h1>University</h1>
     <ul>
-        <li><strong>Using LLMs to Write SQL</strong>
-            <p></p>
+        <li><strong>Leveraging Large Language Models for
+            Text-to-SQL on the IUPHAR/BPS Guide to
+            Pharmacology Database</strong>
+            <p>In recent years, the advancement of Large Language Models (LLMs) has established
+                a new and improved approach for converting natural language (NL) questions into
+                Structured Query Language (SQL) statements (text-to-SQL). In this study, I researched
+                the task of text-to-SQL for the IUPHAR/BPS Guide to Pharmacology database (GtoPdb)
+                [1]. The motivation for my research was to improve the GtoPdb as a teaching resource,
+                allowing staff and students to query the database through NL requests, making the
+                GtoPdb more accessible for all users (students and researchers).
+                To conduct my research, I was given a small dataset of NL-SQL pairs suitable for use
+                on the GtoPdb. I investigated several in-context learning methods found in relevant
+                text-to-SQL literature. Through the combination of the best zero-shot methods explored
+                on the training set I constructed an effective zero-shot text-to-SQL pipeline. Using
+                this pipeline, I integrated several few-shot learning strategies to help pick NL-SQL
+                examples, from the training set, when evaluating the held-out set.
+                In addition, I designed an evaluation metric, Partial Execution Accuracy (PEX), to
+                better assess the accuracy of generated SQL queries. I discovered that choosing random
+                few-shot examples, from the training set, had a significant impact on the accuracy of
+                generated SQL queries (increasing from 3.33% to 16.67%). Moreover, I was able to
+                show that choosing relevant few-shot examples, based on their similarity to a given NL
+                question, resulted in a further increase in accuracy (reaching 30%).</p>
         </li>
         <li><strong>Detecting AI Written Text </strong></a>
 <!--             https://www.maths.ed.ac.uk/school-of-mathematics/news?nid=1063 -->
