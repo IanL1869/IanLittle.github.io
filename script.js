@@ -26,8 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error(error));
 });
 
-document.querySelectorAll('.social-links a').forEach(link => {
-    const currentPage = window.location.pathname.split('/').pop();
+// Add active class to current page link
+const currentPage = location.pathname.split('/').pop();
+document.querySelectorAll('.nav-links a').forEach(link => {
     if (link.getAttribute('href') === currentPage) {
         link.classList.add('active');
     }
