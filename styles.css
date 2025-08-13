@@ -44,6 +44,11 @@ Reset & base styles
   .social-links a:hover {
     color: #007acc;
   }
+
+  .social-links a.active {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 3px;
+  }
   
   section {
     max-width: 800px;
