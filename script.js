@@ -9,6 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             document.querySelector("header").innerHTML = data;
+
+            // Active nav — must run AFTER header HTML is inserted
+            const currentPage = location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active');
+                }
+                if (href === 'professional-profile.html' &&
+                    (currentPage === 'cv.html' || currentPage === 'education.html')) {
+                    link.classList.add('active');
+                }
+            });
         })
         .catch(error => console.error(error));
 
@@ -24,16 +37,4 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector("footer").innerHTML = data;
         })
         .catch(error => console.error(error));
-});
-
-const currentPage = location.pathname.split('/').pop();
-document.querySelectorAll('.nav-links a').forEach(link => {
-    const linkHref = link.getAttribute('href');
-    if (linkHref === currentPage) {
-        link.classList.add('active');
-    }
-    // Handle the case where the new page name might change
-    if (linkHref === 'professional-profile.html' && (currentPage === 'cv.html' || currentPage === 'education.html')) {
-         link.classList.add('active');
-    }
 });
