@@ -13,6 +13,19 @@ body {
     padding: 0 1rem;
 }
 
+/* General content links */
+a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 header {
     background: linear-gradient(135deg, #1a1f2e 0%, #2d3550 100%);
     padding: 2rem 0;
@@ -134,6 +147,43 @@ section ul li p {
     margin-top: 0.4rem;
     color: #475569;
     font-size: 0.95rem;
+}
+
+/* Contact-style cards: li contains only a link */
+section ul li:has(> a:only-child) {
+    transition: background 0.2s ease, border-left-color 0.2s ease;
+    cursor: pointer;
+}
+
+section ul li:has(> a:only-child):hover {
+    background: #eff6ff;
+    border-left-color: #1d4ed8;
+}
+
+section ul li > a:only-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1e293b;
+    text-decoration: none;
+}
+
+section ul li > a:only-child::after {
+    content: '→';
+    color: #3b82f6;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+section ul li > a:only-child:hover {
+    color: #1e293b;
+    text-decoration: none;
+}
+
+section ul li > a:only-child:hover::after {
+    transform: translateX(4px);
 }
 
 footer {
