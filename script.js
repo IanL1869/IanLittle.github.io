@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then(data => {
-            document.querySelector("header").innerHTML = data;
+            const headerEl = document.querySelector("header");
+            headerEl.innerHTML = data;
+            headerEl.classList.add('loaded');
 
             // Active nav — must run AFTER header HTML is inserted
             const currentPage = location.pathname.split('/').pop() || 'index.html';
@@ -22,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.classList.add('active');
                 }
             });
+
+            // Dark mode toggle
+            initThemeToggle();
         })
         .catch(error => console.error(error));
 
@@ -34,7 +39,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then(data => {
-            document.querySelector("footer").innerHTML = data;
+            const footerEl = document.querySelector("footer");
+            footerEl.innerHTML = data;
+            footerEl.classList.add('loaded');
         })
         .catch(error => console.error(error));
 });
+
+function initThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+
+        if (newTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+
+        localStorage.setItem('theme', newTheme);
+    });
+}
