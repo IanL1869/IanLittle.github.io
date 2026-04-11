@@ -32,7 +32,7 @@
 [data-theme="dark"] {
     --color-bg: #0f172a;
     --color-text: #e2e8f0;
-    --color-heading: #f1f5f9;
+    --color-heading: #ffffff;
     --color-link: #60a5fa;
     --color-link-hover: #93bbfd;
     --color-header-gradient-start: #0b0f1a;
@@ -93,7 +93,6 @@ header {
     padding: 2rem 0;
     text-align: center;
     border-bottom: none;
-    position: relative;
     transition: background 0.3s ease;
 }
 
@@ -155,39 +154,26 @@ header p {
 
 /* Dark mode toggle */
 #theme-toggle {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    color: var(--color-nav-link);
+    font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, transform 0.2s ease;
-    padding: 0;
+    padding: 8px 14px;
+    margin-top: 1rem;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 #theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
 }
 
 #theme-toggle:focus-visible {
     outline: 2px solid var(--color-nav-active);
     outline-offset: 3px;
-}
-
-.theme-icon::before {
-    content: '\1F319';
-    font-size: 1.1rem;
-}
-
-[data-theme="dark"] .theme-icon::before {
-    content: '\2600\FE0F';
 }
 
 /* Profile photo */
@@ -444,12 +430,6 @@ footer.loaded {
         padding: 1rem;
     }
 
-    #theme-toggle {
-        top: 0.8rem;
-        right: 0.8rem;
-        width: 36px;
-        height: 36px;
-    }
 }
 
 /* Accessibility: respect reduced motion preference */
