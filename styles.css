@@ -9,6 +9,7 @@
     --color-header-gradient-end: #475569;
     --color-header-text: #fff;
     --color-header-subtitle: #cbd5e1;
+    --color-header-edu: #94a3b8;
     --color-nav-link: #e2e8f0;
     --color-nav-active: #60a5fa;
     --color-section-bg: #fff;
@@ -18,13 +19,13 @@
     --color-card-accent: #3b82f6;
     --color-card-text: #475569;
     --color-card-hover-bg: #eff6ff;
+    --color-card-hover-shadow: rgba(59, 130, 246, 0.08);
     --color-tag-bg: #dbeafe;
     --color-tag-text: #1e40af;
-    --color-footer-bg: #111827;
-    --color-footer-text: #9ca3af;
-    --color-footer-link: #6b7280;
-    --color-footer-link-hover: #9ca3af;
-    --color-footer-contact: #fff;
+    --color-footer-bg: #2d3a4f;
+    --color-footer-text: #cbd5e1;
+    --color-footer-link: #94a3b8;
+    --color-footer-link-hover: #e2e8f0;
     --color-profile-shadow: rgba(0, 0, 0, 0.1);
     --color-nav-mobile-bg: rgba(255, 255, 255, 0.08);
 }
@@ -39,6 +40,7 @@
     --color-header-gradient-end: #1a1f2e;
     --color-header-text: #fff;
     --color-header-subtitle: #94a3b8;
+    --color-header-edu: #64748b;
     --color-nav-link: #cbd5e1;
     --color-nav-active: #60a5fa;
     --color-section-bg: #1e293b;
@@ -48,13 +50,13 @@
     --color-card-accent: #3b82f6;
     --color-card-text: #94a3b8;
     --color-card-hover-bg: #1e3a5f;
+    --color-card-hover-shadow: rgba(59, 130, 246, 0.12);
     --color-tag-bg: #1e3a5f;
     --color-tag-text: #93c5fd;
-    --color-footer-bg: #020617;
-    --color-footer-text: #9ca3af;
-    --color-footer-link: #6b7280;
-    --color-footer-link-hover: #9ca3af;
-    --color-footer-contact: #e2e8f0;
+    --color-footer-bg: #0b0f1a;
+    --color-footer-text: #94a3b8;
+    --color-footer-link: #64748b;
+    --color-footer-link-hover: #cbd5e1;
     --color-profile-shadow: rgba(0, 0, 0, 0.4);
     --color-nav-mobile-bg: rgba(255, 255, 255, 0.06);
 }
@@ -67,7 +69,7 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.7;
@@ -92,25 +94,41 @@ a:hover {
     text-underline-offset: 3px;
 }
 
+/* ===== Header ===== */
 header {
     background: linear-gradient(135deg, var(--color-header-gradient-start) 0%, var(--color-header-gradient-end) 100%);
-    padding: 2rem 0;
+    padding: 2rem 0 1.8rem;
     text-align: center;
     border-bottom: none;
     transition: background 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
 }
 
 header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 400;
     letter-spacing: -0.5px;
     color: var(--color-header-text);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 header p {
-    font-size: 1rem;
     color: var(--color-header-subtitle);
+}
+
+.header-role {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.header-edu {
+    font-size: 0.85rem;
+    color: var(--color-header-edu);
+    margin-top: 0.15rem;
 }
 
 /* Navigation */
@@ -190,23 +208,27 @@ header p {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Dark mode toggle */
+/* ===== Theme toggle — sun/moon icon ===== */
 #theme-toggle {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     color: var(--color-nav-link);
-    font-size: 0.85rem;
-    font-weight: 600;
     cursor: pointer;
-    padding: 8px 14px;
+    padding: 8px;
     margin-top: 1rem;
-    transition: background 0.2s ease, color 0.2s ease;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.3s ease;
 }
 
 #theme-toggle:hover {
     background: rgba(255, 255, 255, 0.25);
     color: #fff;
+    transform: rotate(15deg);
 }
 
 #theme-toggle:focus-visible {
@@ -214,7 +236,14 @@ header p {
     outline-offset: 3px;
 }
 
-/* Hero layout */
+/* Show sun in dark mode, moon in light mode */
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* ===== Hero layout ===== */
 .hero {
     display: flex;
     align-items: center;
@@ -226,15 +255,17 @@ header p {
     flex: 1;
 }
 
-/* Profile photo */
+/* Profile photo — #4: border treatment */
 .profile-img {
     display: block;
     width: 240px;
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 1px solid var(--color-card-border);
     box-shadow: 0 4px 12px var(--color-profile-shadow);
 }
 
+/* ===== Section ===== */
 section {
     max-width: 800px;
     margin: 2rem auto;
@@ -245,18 +276,28 @@ section {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-h1 {
+/* #8: Scope h1 border to section only */
+section h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-heading);
     margin-bottom: 1rem;
     border-bottom: 2px solid var(--color-card-border);
     padding-bottom: 0.4rem;
 }
 
+h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-heading);
+}
+
 h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-heading);
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
@@ -268,13 +309,14 @@ hr {
     margin: 1.5rem 0;
 }
 
-/* Card-style list entries */
+/* ===== Card-style list entries ===== */
 section ul {
     list-style: none;
     padding: 0;
     margin-bottom: 1rem;
 }
 
+/* #7: Card hover states on all cards */
 section > ul > li {
     background: var(--color-card-bg);
     border: 1px solid var(--color-card-border);
@@ -282,7 +324,12 @@ section > ul > li {
     border-radius: 6px;
     padding: 1.2rem 1.5rem;
     margin-bottom: 1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section > ul > li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-card-hover-shadow);
 }
 
 section > ul > li > p {
@@ -350,6 +397,12 @@ details[open] summary {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Tag pills should not have card hover effect */
+.tag-list li:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 /* Extracurricular activity sub-lists */
 .activity-list {
     list-style: disc;
@@ -363,9 +416,16 @@ details[open] summary {
     margin-bottom: 0.15rem;
 }
 
-/* Contact-style cards: li contains only a link */
+/* Activity list items should not have card hover effect */
+.activity-list li:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===== Contact-style cards: li contains only a link ===== */
+/* #5: Left-align icon+text together */
 section ul li:has(> a:only-child) {
-    transition: background 0.2s ease, border-left-color 0.2s ease;
+    transition: background 0.2s ease, border-left-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
 }
 
@@ -377,17 +437,16 @@ section ul li:has(> a:only-child):hover {
 section ul li > a:only-child {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     font-weight: 600;
     font-size: 1rem;
     color: var(--color-text);
     text-decoration: none;
-    gap: 10px;
+    gap: 12px;
 }
 
 section ul li > a:only-child svg {
     flex-shrink: 0;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 section ul li > a:only-child::after {
@@ -395,6 +454,7 @@ section ul li > a:only-child::after {
     color: var(--color-card-accent);
     transition: transform 0.2s ease;
     flex-shrink: 0;
+    margin-left: auto;
 }
 
 section ul li > a:only-child:hover {
@@ -406,30 +466,45 @@ section ul li > a:only-child:hover::after {
     transform: translateX(4px);
 }
 
+/* ===== Footer — #10: Lighter, with inline social icons ===== */
 footer {
     text-align: center;
-    padding: 1.2rem;
-    background-color: var(--color-footer-bg);
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-footer-bg) 0%, var(--color-footer-bg) 100%);
     color: var(--color-footer-text);
     margin-top: auto;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
 footer a {
     color: var(--color-footer-link);
-    text-decoration: underline;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
 }
 
 footer a:hover {
     color: var(--color-footer-link-hover);
+    text-decoration: none;
+    transform: translateY(-1px);
 }
 
-footer .footer-contact-link {
-    color: var(--color-footer-contact);
-}
-
-/* Entrance Animations */
+/* ===== Entrance Animations — #9: Staggered ===== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -442,8 +517,34 @@ footer .footer-contact-link {
 }
 
 section {
-    animation: fadeInUp 0.6s ease-out both;
+    animation: fadeInUp 0.5s ease-out both;
 }
+
+section h1 {
+    animation: fadeInUp 0.5s ease-out both;
+    animation-delay: 0.1s;
+}
+
+section .hero,
+section > p,
+section > ul,
+section > h2,
+section > hr {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+section > ul > li {
+    opacity: 0;
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+section > ul > li:nth-child(1) { animation-delay: 0.25s; }
+section > ul > li:nth-child(2) { animation-delay: 0.35s; }
+section > ul > li:nth-child(3) { animation-delay: 0.45s; }
+section > ul > li:nth-child(4) { animation-delay: 0.55s; }
+section > ul > li:nth-child(5) { animation-delay: 0.65s; }
 
 header {
     opacity: 0;
@@ -462,10 +563,18 @@ footer.loaded {
     animation-delay: 0.15s;
 }
 
-/* Mobile Responsiveness */
+/* ===== Mobile Responsiveness ===== */
 @media (max-width: 600px) {
     header h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    .header-role {
+        font-size: 0.9rem;
+    }
+
+    .header-edu {
+        font-size: 0.8rem;
     }
 
     #nav-toggle {

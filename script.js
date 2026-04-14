@@ -65,20 +65,14 @@ function initThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
-    // Set initial label based on current theme
-    const isDarkNow = document.documentElement.getAttribute('data-theme') === 'dark';
-    toggle.textContent = isDarkNow ? 'Light Mode' : 'Dark Mode';
-
     toggle.addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         const newTheme = isDark ? 'light' : 'dark';
 
         if (newTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            toggle.textContent = 'Light Mode';
         } else {
             document.documentElement.removeAttribute('data-theme');
-            toggle.textContent = 'Dark Mode';
         }
 
         localStorage.setItem('theme', newTheme);
