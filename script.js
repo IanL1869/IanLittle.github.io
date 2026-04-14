@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
+            // Mobile nav toggle
+            initNavToggle();
+
             // Dark mode toggle
             initThemeToggle();
         })
@@ -45,6 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error(error));
 });
+
+function initNavToggle() {
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.querySelector('.nav-links');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', () => {
+        const isOpen = toggle.classList.toggle('open');
+        nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+    });
+}
 
 function initThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
