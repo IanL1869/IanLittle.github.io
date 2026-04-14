@@ -5,10 +5,10 @@
     --color-heading: #1a1f2e;
     --color-link: #2563eb;
     --color-link-hover: #1d4ed8;
-    --color-header-gradient-start: #1a1f2e;
-    --color-header-gradient-end: #2d3550;
+    --color-header-gradient-start: #2d3a4f;
+    --color-header-gradient-end: #475569;
     --color-header-text: #fff;
-    --color-header-subtitle: #a0aec0;
+    --color-header-subtitle: #cbd5e1;
     --color-nav-link: #e2e8f0;
     --color-nav-active: #60a5fa;
     --color-section-bg: #fff;
@@ -71,7 +71,11 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.7;
-    padding: 0 1rem;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -189,8 +193,8 @@ header p {
 section {
     max-width: 800px;
     margin: 2rem auto;
-    background: var(--color-section-bg);
     padding: 1.5rem 2rem;
+    background: var(--color-section-bg);
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--color-section-shadow);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -356,7 +360,7 @@ footer {
     padding: 1.2rem;
     background-color: var(--color-footer-bg);
     color: var(--color-footer-text);
-    margin-top: 2rem;
+    margin-top: auto;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
