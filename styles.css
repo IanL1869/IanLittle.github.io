@@ -242,6 +242,12 @@ section > ul > li > p {
     font-size: 0.95rem;
 }
 
+/* Degree classification highlight */
+.degree-classification {
+    color: var(--color-card-accent);
+    font-size: 1rem;
+}
+
 /* Accordion disclosure widget */
 details {
     margin-top: 0.8rem;
