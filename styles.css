@@ -340,7 +340,7 @@ section > ul > li > p {
 
 /* Degree classification highlight */
 .degree-classification {
-    color: var(--color-card-accent);
+    color: var(--color-heading);
     font-size: 1rem;
 }
 
